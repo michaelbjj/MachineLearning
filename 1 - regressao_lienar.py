@@ -1,4 +1,5 @@
 from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.model_selection import train_test_split
 
 frases =  [
       "Estou feliz hoje!",
@@ -15,10 +16,12 @@ frases =  [
       "Não tenho energia para fazer nada",
 ]
 
-rotulos = [1, 1 ,0 ,0, 1, 0, 1, 0, 1, 0, 1, 0]
+Y = [1, 1 ,0 ,0, 1, 0, 1, 0, 1, 0, 1, 0]
 
 vectorizer = CountVectorizer()
-vector = vectorizer.fit_transform(frases).toarray()
+X = vectorizer.fit_transform(frases).toarray()
 
 print("Palavras", vectorizer.get_feature_names_out())
-print(vector)
+print(X)
+
+x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
