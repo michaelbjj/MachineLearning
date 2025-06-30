@@ -47,3 +47,8 @@ y_pred_rf =  EmotionIA.predict(x_test)
 acuracia_rf = accuracy_score(y_test, y_pred_rf)
 
 print(f"Acurácia Modelo Random Forest : {acuracia_rf:.2f}")
+
+joblib.dump(EmotionIA, 'emotionIA_rf.pkl')
+joblib.dump(vectorizer, "tfidf_vectorizer.pkl")
+
+print("Model Saved!")
