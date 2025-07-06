@@ -2,7 +2,7 @@ import joblib
 EmotionIa  = joblib.load("C:/Projetos/Projetos ItValley/venv/emotionIA_rf.pkl")
 vectorizer = joblib.load("C:/Projetos/Projetos ItValley/venv/tfidf_vectorizer.pkl")
 
-sentence = ["I am happy today"]
+sentence = [input("Digite uma frase: ")]
 
 x = vectorizer.transform(sentence).toarray()
 
