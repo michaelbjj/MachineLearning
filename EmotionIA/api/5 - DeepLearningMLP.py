@@ -1,6 +1,8 @@
 import numpy as np
 import tensorflow as tf
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+from tensorflow import keras
 
 sentences = [
   "I feel incredibly blessed today!", "What an amazing moment, I can't stop smiling!",
@@ -60,12 +62,12 @@ sentences = [
 labels = np.array([1] * 50 + [0] * 50)
 
 max_tokens = 2000
-sequence_lenght = 20
+sequence_length = 20
 
 vectorizer = tf.keras.layers.TextVectorization(
       max_tokens = max_tokens, 
       output_mode = "int",
-      output_sequence_length=sequence_lenght
+      output_sequence_length=sequence_length
 )
 
 vectorizer.adapt(sentences)
@@ -75,3 +77,19 @@ vocab_size = vectorizer.vocabulary_size()
 x = vectorizer(sentences).numpy()
 
 X_train, X_test, y_train, y_test = train_test_split(x, labels, test_size=0.3, random_state=42)
+
+EmotionIA = keras.Sequential([
+    keras.layers.Embedding(input_dim=vocab_size, output_dim=32, mask_zero=True),
+    keras.layers.GlobalAveragePooling1D(),  # Adicionado para achatar os dados
+    keras.layers.Dense(64, activation='relu'),
+    keras.layers.Dense(1, activation='sigmoid')
+])
+
+EmotionIA.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+EmotionIA.fit(X_train, y_train, epochs=30, batch_size=8, verbose=1)
+
+y_pred_nn = (EmotionIA.predict(X_test) > 0.5).astype("int32")
+
+accuracy_nn = accuracy_score(y_test, y_pred_nn)
+print(f"Deep Neural Network (Optimize TF-IDF) Accuracy: {accuracy_nn:.2f}")
