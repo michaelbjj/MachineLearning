@@ -21,14 +21,33 @@
 #print(type(dicionario))
 #print(dicionario["logica"])
 
-pessoa = {"nome": "Asaph", "idade": 20, "cidade": "Curitiba"}
-print(pessoa["cidade"])
+#pessoa = {"nome": "Asaph", "idade": 20, "cidade": "Curitiba"}
+#print(pessoa["cidade"])
 
-print(pessoa.keys())
+#print(pessoa.keys())
 
-print(pessoa.values())
+#print(pessoa.values())
 
-print(pessoa.items())
+#print(pessoa.items())
 
-for chave, valor in pessoa.items():
-    print(f"{chave}: {valor}")
+#for chave, valor in pessoa.items():
+    #print(f"{chave}: {valor}")
+
+
+#frutas = ["maça", "banana", "laranja"]
+
+#frutas.append("uva")
+
+#frutas.remove("banana")
+
+#frutas.remove("banana")
+
+#print(frutas)
+
+numeros = [3 , 1, 4, 2]
+
+numeros.sort()
+
+numeros.reverse()
+
+print(numeros)
