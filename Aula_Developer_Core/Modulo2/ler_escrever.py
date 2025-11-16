@@ -1,8 +1,12 @@
 #Trabalhando com arquivos
-arquivo = open(r"C:\Projetos\Projetos ItValley\Aula_Developer_Core\Modulo2\exemplo.txt", 'r')
+#arquivo = open(r"C:\Projetos\Projetos ItValley\Aula_Developer_Core\Modulo2\exemplo.txt", 'r')
 
-conteudo = arquivo.read()
+#conteudo = arquivo.read()
 
-print(conteudo)
+#print(conteudo)
 
-arquivo.close()
+#arquivo.close()
+
+with open(r"C:\Projetos\Projetos ItValley\Aula_Developer_Core\Modulo2\exemplo.txt", 'r') as arquivo:
+    conteudo = arquivo.read()
+    print(conteudo)
