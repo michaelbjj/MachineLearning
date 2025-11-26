@@ -1,0 +1,3 @@
+Produtos,Quantidade,Preço
+Teclado,10,100
+Monitor,15,150
